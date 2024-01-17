@@ -1,0 +1,22 @@
+BOLD="\033[1m"
+END="\033[0m"
+BLACK="\033[48;2;0;0;0m"
+GREEN_B="\033[48;2;0;176;76m"
+GREEN_F="\033[38;2;0;176;76m"
+====
+"${GREEN_B}${BLACK_F}$(echo '\uE0B0')${END}${BOLD}${GREEN_B} ${USER} ${END}${GREEN_F}$(echo '\uE0B0')${END}"
+
+S="${GREEN_B}"
+S+="${BLACK_F}"
+S+="$(echo '\uE0B0')"
+S+="${END}"
+S+="${BOLD}"
+S+="${GREEN_B}"
+S+=" ${USER}"
+S+="${END}"
+S+="${GREEN_F}"
+S+="$(echo '\uE0B0')"
+S+="${END}"
+
+
+S="${GREEN_B}${BLACK_F}$(ehco '\uE0B0')${END}${BOLD}${GREEN_B} ${USER} ${END}${END}${GREEN_F}$(echo '\uE0B0')${END}${END}"
