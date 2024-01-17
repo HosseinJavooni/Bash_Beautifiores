@@ -1,0 +1,19 @@
+Link: 
+=================================================
+https://linuxhint.com/install-custom-fonts-linux/
+=================================================
+To install custom fonts using the command line interface, you will need to copy font files to certain directories. If you want to install fonts for all users, copy font files to the following directory (root access is required):
+
+	/usr/share/fonts
+
+If you want to install fonts for current user only, use the following location instead (create folder if it doesn’t exist):
+
+	$HOME/.local/share/fonts
+
+Once the font files are copied to these locations, you need to refresh system wide font cache to complete the installation. To do so, run the following command:
+
+	$ sudo fc-cache -f -v
+
+Alternatively, you can just reboot the system to refresh the font cache.
+
+You can also create subdirectories in the two locations mentioned above and add fonts to these folders to neatly categorize them. Font cache will automatically pick them once you refresh it.
