@@ -2,7 +2,7 @@
 #!/bin/bash
 # Author: Hossein Jabani
 # Created: 2024-01-13
-# Last Modified: 2024-01-18
+# Last Modified: 2024-01-19
 # Description:
 # When you append this code to ~/.bashrc your bash prompt changes to new form.
 # Usage:
@@ -43,8 +43,12 @@ LEFT_ARROW="\uE0B2"
 #LEFT_ARROW="\u25C0"
 #GIT_BRANCH_ICON="\uE0A0"
 GIT_BRANCH_ICON=""
+#GIT_BRANCH_ICON=""
 #GIT_ICON="GIT"
-GIT_ICON=""
+GIT_ICON=" "
+GIT_UNSTAGE_ICON=" "
+GIT_STAGED_ICON=" "
+GIT_COMMITED_ICON=" "
 RIGHT_ARROW="\uE0B0"
 #RIGHT_ARROW="\u25B6"
 #---------------------------------
@@ -68,7 +72,7 @@ arrow_left_unstage() {
 parse_git_branch_unstage() {
   result=$(git status 2> /dev/null)
   if [[ $? = 0 && ($result == *"Untracked files:"* || $result == *"Changes not staged for commit:"*) ]]; then
-     echo "${GIT_ICON} $(echo -e ${GIT_BRANCH_ICON}) $(git branch --show-current)"
+     echo "${GIT_ICON} $(echo -e ${GIT_BRANCH_ICON}) $(git branch --show-current) ${GIT_UNSTAGE_ICON}"
   else
      echo ""
   fi
@@ -92,7 +96,7 @@ arrow_left_staged() {
 parse_git_branch_staged() {
   result=$(git status 2> /dev/null)
   if [[ $? = 0 && $result != *"Untracked files:"* && $result != *"Changes not staged for commit:"* && $result == *"Changes to be committed:"* ]]; then
-     echo "${GIT_ICON} $(echo -e ${GIT_BRANCH_ICON}) $(git branch --show-current)"
+     echo "${GIT_ICON} $(echo -e ${GIT_BRANCH_ICON}) $(git branch --show-current) ${GIT_STAGED_ICON}"
   else
      echo ""
   fi
@@ -116,7 +120,7 @@ arrow_left_committed() {
 parse_git_branch_committed() {
   result=$(git status 2> /dev/null)
   if [[ $? = 0 && $result == *"nothing to commit, working tree clean"* ]]; then
-     echo "${GIT_ICON} $(echo -e ${GIT_BRANCH_ICON}) $(git branch --show-current)"
+     echo "${GIT_ICON} $(echo -e ${GIT_BRANCH_ICON}) $(git branch --show-current) ${GIT_COMMITED_ICON}"
   else
      echo ""
   fi
